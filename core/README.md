@@ -12,7 +12,7 @@
 1. Clone the repository:
    ```bash
    git clone https://github.com/meddhiaka/fsb-gpt-demo.git
-   cd your-repository
+   cd fsb-gpt-demo
    ```
 
 2. Create a virtual environment:
@@ -35,7 +35,7 @@
 1. Clone the repository:
    ```powershell
    git clone https://github.com/meddhiaka/fsb-gpt-demo.git
-   cd your-repository
+   cd fsb-gpt-demo
    ```
 
 2. Create a virtual environment:
