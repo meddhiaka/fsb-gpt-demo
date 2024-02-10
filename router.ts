@@ -10,9 +10,7 @@ r.get("/", (req: Request, res: Response) => {
 r.post("/chat", (req: Request, res: Response) => {
   const {message} = req.body
 
-  console.log(message)
-
-  let options: Options = {
+  const options: Options = {
     mode: 'text',
     pythonPath: 'core/venv/bin/python',
     pythonOptions: ['-u'],
@@ -20,11 +18,11 @@ r.post("/chat", (req: Request, res: Response) => {
     args: [message]
   };
 
-  PythonShell.run('main.py', options).then(results => {
-    res.json(results)
-  })
-//    const result = req.body;
-//    res.json(result)
+  PythonShell.run('main.py', options)
+          .then(results => {
+            res.json(results)
+          })
+          .catch(e => console.error(e))
 })
 
 
