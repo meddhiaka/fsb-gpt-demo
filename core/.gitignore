@@ -124,3 +124,14 @@ dmypy.json
 # PyInstaller
 dist/
 build/
+
+
+
+
+
+
+
+
+
+
+node_modules
