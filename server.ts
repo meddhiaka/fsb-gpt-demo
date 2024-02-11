@@ -1,3 +1,4 @@
+import cors from "cors"
 import express, { Express, Request, Response } from "express"
 import dotenv from "dotenv"
 
@@ -10,6 +11,7 @@ dotenv.config()
 const app: Express = express()
 const port = process.env.PORT
 
+app.use(cors())
 app.use(bodyParser.json())
 
 app.get("/", (req: Request, res: Response) => {
