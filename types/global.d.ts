@@ -1,3 +1,0 @@
-interface chatbotUniqueMessageEx {
-    message: String;
-}
