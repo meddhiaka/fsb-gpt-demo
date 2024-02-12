@@ -1,4 +1,4 @@
-export default function chatInput({ q, setQ, handleKeyDown, fetchReply }: ChatInputInt) {
+export default function chatInput({ q, setQ, handleKeyDown, fetchReply, typingStatus }: ChatInputInt) {
   return (
     <div className="w-full flex justify-center gap-x-2 my-3">
       <input
@@ -8,10 +8,12 @@ export default function chatInput({ q, setQ, handleKeyDown, fetchReply }: ChatIn
         value={q}
         onChange={(e) => setQ(e.target.value)}
         onKeyDown={handleKeyDown}
+        disabled={typingStatus}
       />
       <button
         onClick={() => fetchReply()}
         className="w-3/12 sm:w-2/12 bg-red-500 rounded-md px-2 hover:bg-red-600 transition duration-300 text-white font-semibold"
+        disabled={typingStatus}
       >
         Ab3ath
       </button>

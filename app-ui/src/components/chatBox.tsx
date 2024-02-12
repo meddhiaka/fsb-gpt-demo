@@ -1,7 +1,6 @@
-import React from "react";
 import { TypeAnimation } from "react-type-animation";
 
-export default function chatBox({ chat }: User) {
+export default function chatBox({ chat, setTypingStatus}) {
   return (
     <div className="flex-1 m-2 rounded-md p-2 bg-custom">
       {chat.map((e, index) => (
@@ -17,7 +16,7 @@ export default function chatBox({ chat }: User) {
             (
               <TypeAnimation
                 className={`text-black`}
-                sequence={[e.message, 10000]}
+                sequence={[200, () => {setTypingStatus(true)}, 3000, e.message, ()=> {setTypingStatus(false)}]}
                 cursor={false}
                 repeat={0}
               />
@@ -27,3 +26,5 @@ export default function chatBox({ chat }: User) {
     </div>
   );
 }
+
+
