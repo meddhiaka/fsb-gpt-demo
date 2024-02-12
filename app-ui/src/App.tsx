@@ -1,42 +1,52 @@
 import { useState } from "react";
 import axios from "axios";
+import toast, {toastConfig} from "react-simple-toasts";
+import 'react-simple-toasts/dist/theme/dark.css';
+
+import ChatBox from "./components/chatBox";
+import ChatInput from "./components/chatInput";
+
+toastConfig({
+  theme: 'dark',
+});
+
+
 
 export default function App() {
-  const [q, setQ] = useState('');
+  const [typingStatus, setTypingStatus] = useState<boolean>(true);
+  const [q, setQ] = useState<String>("");
+  const [chat, setChat] = useState<User[]>([
+    {
+      role: "fsb-GPT-demo",
+      message: "Ahla bik, f chnowa najem n3awnek ?",
+    },
+  ]);
 
   async function fetchReply() {
-    const r = await axios.post('http://localhost:1337/api/chat', { message: q });
-    console.log(r.data[0]);
-    setQ('');
+    if (q === '') {
+      toast('winou sou2elek ?')
+    } else {
+      const r = await axios.post("http://localhost:1338/api/chat", { message: q });
+      setChat([
+        ...chat,
+        { role: "Foulen", message: q },
+        { role: "fsb-GPT-demo", message: r.data[0] },
+      ]);
+      setQ("");
+    }
   }
 
-  const handleKeyDown = (e: { key: string; preventDefault: () => void; }) => {
-    if (e.key === 'Enter') {
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
       e.preventDefault();
       fetchReply();
     }
   };
 
   return (
-    <div className="max-w-5xl container mx-auto bg-black h-screen flex flex-col place-content-end">
-      <div className="w-full flex justify-center gap-x-2 my-3">
-        <input
-          placeholder="Ask me anything"
-          className="placeholder:text-gray-600 px-2 py-3 w-9/12 outline-none rounded-sm border-red-500 border-[1px] bg-gray-500"
-          type="text"
-          name=""
-          id=""
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-        <button
-          onClick={() => fetchReply()}
-          className="w-2/10 bg-white border-[1px] border-red-500 rounded-md px-4 py-2"
-        >
-          Submit
-        </button>
-      </div>
+    <div className="max-w-5xl container mx-auto bg-gray-900 h-screen flex flex-col place-content-end p-4">
+      <ChatBox chat={chat} setTypingStatus={setTypingStatus} typingStatus={typingStatus} />
+      <ChatInput q={q} setQ={setQ} handleKeyDown={handleKeyDown} fetchReply={fetchReply} typingStatus={typingStatus} />
     </div>
   );
 }
