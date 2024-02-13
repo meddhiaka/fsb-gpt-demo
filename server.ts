@@ -15,7 +15,7 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.get("/", (req: Request, res: Response) => {
-  res.send({msg:"chatbot serverside root API :)"})
+  res.send({ msg: "chatbot serverside root API :)" })
 })
 
 app.use("/api", r)
