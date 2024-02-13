@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import toast, {toastConfig} from "react-simple-toasts";
+import toast, { toastConfig } from "react-simple-toasts";
 import 'react-simple-toasts/dist/theme/dark.css';
 
 import ChatBox from "./components/chatBox";
@@ -14,7 +14,7 @@ toastConfig({
 
 export default function App() {
   const [typingStatus, setTypingStatus] = useState<boolean>(true);
-  const [q, setQ] = useState<String>("");
+  const [q, setQ] = useState<string>("");
   const [chat, setChat] = useState<User[]>([
     {
       role: "fsb-GPT-demo",
@@ -36,7 +36,7 @@ export default function App() {
     }
   }
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
       fetchReply();

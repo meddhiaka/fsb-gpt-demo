@@ -14,3 +14,7 @@
   background-image: url(/fsb.jpg);
   background-size: cover;
 }
+
+.backdrop {
+  backdrop-filter: blur(2px);
+}
