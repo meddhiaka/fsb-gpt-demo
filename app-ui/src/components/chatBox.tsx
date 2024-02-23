@@ -11,7 +11,7 @@ export default function chatBox({ chat, setTypingStatus }: ChatBoxProps) {
         >
           {index % 2 === 1 ? (
             <>
-              <p className="font-extrabold text-lg py-1">{e.role}</p>
+              <p className="font-extrabold  text-lg py-1">{e.role}</p>
               <p className="text-white">{e.message}</p>
             </>
           ) :
@@ -28,6 +28,24 @@ export default function chatBox({ chat, setTypingStatus }: ChatBoxProps) {
             )}
         </div>
       ))}
+        {chat.length === 1 &&  (
+          <div className="text-center pt-44  md:pt-44">
+            <TypeAnimation
+              className="text-white text-shadow text-3xl md:text-5xl font-black "
+              sequence={[
+                '#free_palestine 🇵🇸',
+                1000,
+                '#free_palestine 🇵🇸 🇹🇳 🇲🇷',
+                3000,
+                '#free_palestine 🇵🇸 ',
+                100,
+              ]}
+              speed={10}
+              repeat={Infinity}
+            />
+          </div>
+        )}
+
     </div>
   );
 }
