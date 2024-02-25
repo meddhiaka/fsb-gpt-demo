@@ -11,8 +11,6 @@ interface ChatInputProps {
     typingStatus: boolean;
 }
 
-
-
 interface ChatBoxProps {
     chat: User[];
     setTypingStatus: React.Dispatch<React.SetStateAction<boolean>>;

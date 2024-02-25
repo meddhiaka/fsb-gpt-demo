@@ -6,6 +6,7 @@ import 'react-simple-toasts/dist/theme/dark.css';
 import ChatBox from "./components/chatBox";
 import ChatInput from "./components/chatInput";
 
+
 toastConfig({
   theme: 'dark',
 });
@@ -24,7 +25,7 @@ export default function App() {
 
   async function fetchReply() {
     if (q === '') {
-      toast('winou sou2elek ?')
+      toast('winou sou2elek lezem ta3tini haja bech nefhem ?')
     } else {
       const r = await axios.post("http://localhost:1338/api/chat", { message: q });
       setChat([
